@@ -8,8 +8,8 @@ class ProductsController extends Controller
 {
     public function index()
     {
-        $title = "Welcome to my laravel 8 tutorial.";
-        $description = "Created by Kennedy.";
+        //$title = "Welcome to my laravel 8 tutorial.";
+       // $description = "Created by Kennedy.";
 
         // $data = [
         //   'Oneplus' => 'Oneplus',
@@ -25,6 +25,11 @@ class ProductsController extends Controller
 
         //Directly in the view
         //return view('products/index', ['data' => $data]);
+
+        print_r(route('products'));
+
+        
+        return view('products.index');
     }
 
     public function about()

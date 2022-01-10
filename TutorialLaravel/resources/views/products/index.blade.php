@@ -10,10 +10,11 @@
 
 <body>
     <h1>Products</h1>
-
-    <p>{{ $products }}</p>
+<!--escolhe usando o nome da rota que eu botei-->
+    <a href="{{ route('products') }}">Products</a>
     
 
 </body>
 
 </html>
+
