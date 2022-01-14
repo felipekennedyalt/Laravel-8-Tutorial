@@ -12,10 +12,10 @@
 
     <ul>
         <li>
-            <a href="/">Home</a>
+            <a href="/" class="{{ request()->is('/') ? 'active' : '' }}">Home</a>
         </li>
         <li>
-            <a href="about">About</a>
+            <a href="about" class="{{ request()->is('about/*') ? 'active' : '' }}">About</a>
         </li>
         <li>
             <a href="portfolio">Portfolio</a>
