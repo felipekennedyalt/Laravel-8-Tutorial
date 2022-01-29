@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\PostsController;
+
 //tem que mudar a rota dos controllers pro que você vai usar se nao não funciona
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +42,6 @@ Route::get('/products/about', [ProductsController::class, 'about']);
 
 //naming routes
 //Route::get('/products', [ProductsController::class, 'index'])->name('products');
+
+//Posts
+Route::get('/posts', [PostsController::class, 'index']);
