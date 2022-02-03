@@ -53,7 +53,8 @@ class PostsController extends Controller
         //    'body' => 'Updated body'
         //]);
 
-        $posts = DB::table('posts')->where('id', '=', 3)->delete();
+        //$posts = DB::table('posts')->where('id', '=', 3)->delete();
+        $posts = DB::table('posts')->get();
 
 
        
