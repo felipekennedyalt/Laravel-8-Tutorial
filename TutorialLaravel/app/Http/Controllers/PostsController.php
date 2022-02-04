@@ -57,7 +57,7 @@ class PostsController extends Controller
         $posts = DB::table('posts')->get();
 
 
-       
+       //
         dd($posts);
     }
 }
