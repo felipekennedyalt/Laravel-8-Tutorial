@@ -13,6 +13,16 @@
 
         <div class="y-2 x-1">
             @foreach ($cars as $car)
+                <div class="float-right">
+                    <a class="rounded bg-success text-white border" href="cars/{{ $car->id }}/edit">
+                        Edit &rarr;
+                    </a>
+                    <form class="m-auto" action="/cars/{{ $car->id }}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <button class="rounded bg-danger text-white border" type="submit">Delete &rarr;</button>
+                    </form>
+                </div>
                 <div class="m-auto">
                     <span class="text-info text-capitalize font-italic">
                         Founded: {{ $car->founded }}

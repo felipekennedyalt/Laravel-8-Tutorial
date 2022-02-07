@@ -65,7 +65,7 @@ class CarsController extends Controller
     public function store(Request $request)
     {
         //um jeito de fazer
-        //$car = new Car();
+        // $car = new Car();
         // $car->name = $request->input('name');
         // $car->founded = $request->input('founded');
         // $car->description = $request->input('description');
@@ -73,9 +73,9 @@ class CarsController extends Controller
 
         //outro jeito de fazer, da pra usar tambem o método make alem do create, se usar o metodo make ao invez do create tem que usar o metodo save() no final
         $car = Car::create([
-        'name' => $request->input('name'),
-        'founded' => $request->input('founded'),
-        'description' => $request->input('description')
+            'name' => $request->input('name'),
+            'founded' => $request->input('founded'),
+            'description' => $request->input('description')
         ]);
 
         return redirect('/cars');
@@ -100,7 +100,14 @@ class CarsController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        //só com o método find() eu precisaria fazer um loop, usando o first() ele retorna um objeto então não precisa mais fazer o loop.
+        $car = Car::find($id)->first();
+
+        //O with() serve pra não passar como um array e sim como um objeto $car
+        return view('cars.edit')->with('car', $car);
+
+        //o que aconteceu aqui no edit foi que encontramos o nosso carro e retornamos pra view
     }
 
     /**
@@ -112,7 +119,14 @@ class CarsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $car = Car::where('id', $id)
+            ->update([
+                'name' => $request->input('name'),
+                'founded' => $request->input('founded'),
+                'description' => $request->input('description')
+            ]);
+
+        return redirect('/cars');
     }
 
     /**
@@ -121,8 +135,14 @@ class CarsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Car $car)
     {
-        //
+        //outro jeito de fazer
+        //public function destroy($id)
+        // $car = Car::find($id)->first();
+
+        $car->delete();
+
+        return redirect('/cars');
     }
 }
