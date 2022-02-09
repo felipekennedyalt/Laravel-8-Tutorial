@@ -13,5 +13,4 @@ class Container extends Model
 
     protected $primaryKey = 'id';
 
-    
 }

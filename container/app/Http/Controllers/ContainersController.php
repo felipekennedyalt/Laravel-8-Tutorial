@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Car;
+use App\Models\Container;
 
 class ContainersController extends Controller
 {
@@ -13,7 +15,11 @@ class ContainersController extends Controller
      */
     public function index()
     {
-        return view('containers.index');
+        $containers = Container::all();
+
+        return view('containers.index', [
+            'containers' =>$containers
+        ]);
     }
 
     /**
@@ -23,7 +29,7 @@ class ContainersController extends Controller
      */
     public function create()
     {
-        //
+        return view('containers.create');
     }
 
     /**
@@ -34,7 +40,17 @@ class ContainersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $container = new Container;
+
+        $container->cliente = $request->input('cliente');
+        $container->numContainer = $request->input('numContainer');
+        $container->tipo = $request->input('tipo');
+        $container->status = $request->input('status');
+        $container->categoria = $request->input('categoria');
+
+        $container->save();
+
+        return redirect('/containers');
     }
 
     /**

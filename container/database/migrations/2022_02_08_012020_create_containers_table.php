@@ -20,7 +20,7 @@ class CreateContainersTable extends Migration
             $table->integer('tipo');
             $table->String('status');
             $table->String('categoria');
-            
+            $table->timestamps();
         });
     }
 
