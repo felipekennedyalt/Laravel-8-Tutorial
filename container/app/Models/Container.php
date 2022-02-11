@@ -13,4 +13,5 @@ class Container extends Model
 
     protected $primaryKey = 'id';
 
+    protected $fillable = ['cliente', 'numContainer', 'tipo', 'status', 'categoria'];
 }

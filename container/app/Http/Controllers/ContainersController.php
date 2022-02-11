@@ -18,7 +18,7 @@ class ContainersController extends Controller
         $containers = Container::all();
 
         return view('containers.index', [
-            'containers' =>$containers
+            'containers' => $containers
         ]);
     }
 
@@ -40,15 +40,14 @@ class ContainersController extends Controller
      */
     public function store(Request $request)
     {
-        $container = new Container;
+        $car = Container::create([
+            'cliente' => $request->input('cliente'),
+            'numContainer' => $request->input('numContainer'),
+            'tipo' => $request->input('tipo'),
+            'status' => $request->input('status'),
+            'categoria' => $request->input('categoria')
+        ]);
 
-        $container->cliente = $request->input('cliente');
-        $container->numContainer = $request->input('numContainer');
-        $container->tipo = $request->input('tipo');
-        $container->status = $request->input('status');
-        $container->categoria = $request->input('categoria');
-
-        $container->save();
 
         return redirect('/containers');
     }
@@ -72,7 +71,9 @@ class ContainersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $container = Container::find($id)->first();
+
+        return view('containers.edit')->with('container', $container);
     }
 
     /**
@@ -84,7 +85,16 @@ class ContainersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $car = Container::where('id', $id)->update([
+            'cliente' => $request->input('cliente'),
+            'numContainer' => $request->input('numContainer'),
+            'tipo' => $request->input('tipo'),
+            'status' => $request->input('status'),
+            'categoria' => $request->input('categoria')
+        ]);
+
+        return redirect('/containers');
     }
 
     /**
@@ -93,8 +103,10 @@ class ContainersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Container $container)
     {
-        //
+        $container->delete();
+
+        return redirect('/containers');
     }
 }
