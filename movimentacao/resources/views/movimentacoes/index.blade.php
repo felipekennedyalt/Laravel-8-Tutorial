@@ -22,6 +22,12 @@
         <p>
             Hora de trémino: {{ $movimentacao->horaFim }}
         </p>
+
+        <form action="/movimentacoes/{{ $movimentacao->id }}" method="POST">
+            @csrf
+            @method('delete')
+            <button type="submit" class="border text-white bg-danger">Deletar</button>
+        </form>
         <hr>
     </div>
     @endforeach

@@ -44,7 +44,7 @@ class MovimentacoesController extends Controller
             'horaInicio' => $request->input('horaInicio'),
             'horaFim' => $request->input('horaFim')
         ]);
-        
+
         return redirect('/movimentacoes');
     }
 
@@ -70,7 +70,6 @@ class MovimentacoesController extends Controller
         $movimentacoes = movimentacoes::find($id);
 
         return view('/movimentacoes.edit')->with(['movimentacoes' => $movimentacoes]);
-
     }
 
     /**
@@ -87,7 +86,7 @@ class MovimentacoesController extends Controller
             'horaInicio' => $request->input('horaInicio'),
             'horaFim' => $request->input('horaFim')
         ]);
-        
+
 
         return redirect('/movimentacoes');
     }
@@ -100,6 +99,10 @@ class MovimentacoesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $movimentacoes = Movimentacoes::find($id);
+
+        $movimentacoes->delete();
+
+        return redirect('/movimentacoes');
     }
 }
