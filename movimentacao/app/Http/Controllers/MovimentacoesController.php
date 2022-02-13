@@ -13,7 +13,7 @@ class MovimentacoesController extends Controller
      */
     public function index()
     {
-        
+        return view('/movimentacoes.index');
     }
 
     /**
