@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('movimentacoes', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('tipoMov');
             $table->time('horaInicio');
             $table->time('horaFim');
             $table->timestamps();
