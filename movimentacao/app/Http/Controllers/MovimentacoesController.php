@@ -23,7 +23,7 @@ class MovimentacoesController extends Controller
      */
     public function create()
     {
-        //
+        return view('movimentacoes.create');
     }
 
     /**
@@ -34,7 +34,7 @@ class MovimentacoesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
