@@ -16,7 +16,9 @@ class MovimentacoesController extends Controller
     {
         $movimentacoes = Movimentacoes::all();
 
-        return view('/movimentacoes.index')->with(['movimentacoes' => $movimentacoes]);
+        return view('movimentacoes.index', [
+            'movimentacoes' => $movimentacoes
+        ]);
     }
 
     /**
@@ -65,7 +67,10 @@ class MovimentacoesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $movimentacoes = movimentacoes::find($id);
+
+        return view('/movimentacoes.edit')->with(['movimentacoes' => $movimentacoes]);
+
     }
 
     /**
@@ -77,7 +82,14 @@ class MovimentacoesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $movimentacoes = Movimentacoes::where('id', $id)->update([
+            'tipoMov' => $request->input('tipoMov'),
+            'horaInicio' => $request->input('horaInicio'),
+            'horaFim' => $request->input('horaFim')
+        ]);
+        
+
+        return redirect('/movimentacoes');
     }
 
     /**

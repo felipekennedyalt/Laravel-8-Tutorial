@@ -82,7 +82,7 @@ class MovimentacoesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $movimentacao = Movimentacoes::where('id', $id)->update([
+        $movimentacoes = Movimentacoes::where('id', $id)->update([
             'tipoMov' => $request->input('tipoMov'),
             'horaInicio' => $request->input('horaInicio'),
             'horaFim' => $request->input('horaFim')
