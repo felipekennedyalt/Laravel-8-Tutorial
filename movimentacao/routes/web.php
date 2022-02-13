@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MovimentacoesController;
 use App\Models\movimentacoes;
 use Illuminate\Support\Facades\Route;
 
@@ -13,4 +14,4 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::resource('/movimentacoes', Movimentacoes::class);
+Route::resource('/movimentacoes', MovimentacoesController::class);
