@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\movimentacoes;
 use Illuminate\Http\Request;
 
 class MovimentacoesController extends Controller
@@ -13,7 +14,9 @@ class MovimentacoesController extends Controller
      */
     public function index()
     {
-        return view('/movimentacoes.index');
+        $movimentacao = Movimentacoes::all();
+
+        return view('/movimentacoes.index')->with(['movimentacao' => $movimentacao]);
     }
 
     /**
@@ -34,7 +37,13 @@ class MovimentacoesController extends Controller
      */
     public function store(Request $request)
     {
+        $movimentacoes = Movimentacoes::create([
+            'tipoMov' => $request->input('tipoMov'),
+            'horaInicio' => $request->input('horaInicio'),
+            'horaFim' => $request->input('horaFim')
+        ]);
         
+        return redirect('/movimentacoes');
     }
 
     /**

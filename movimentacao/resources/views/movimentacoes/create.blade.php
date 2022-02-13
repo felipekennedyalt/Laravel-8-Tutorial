@@ -6,7 +6,8 @@
     </div>
 
     <div class="m-4">
-        <form action="/movimentacoes" method="post">
+        <form action="/movimentacoes" method="POST">
+            @csrf
             <input type="text" name="tipoMov" id="" placeholder="Tipo de movimentação...">
             <input type="time" name="horaInicio" id="" placeholder="Hora de inicio...">
             <input type="time" name="horaFim" id="" placeholder="Hora de término...">
