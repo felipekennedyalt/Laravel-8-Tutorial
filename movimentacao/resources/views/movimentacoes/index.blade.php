@@ -8,17 +8,19 @@
     <a href="/movimentacoes/create" class="text-white m-4">Adicionar movimentação</a>
 
 
+    @foreach ($movimentacoes as $movimentacao)
     <div class="text-white m-4">
         <h3>
-            Tipo de movimentação:
+            Tipo de movimentação: {{ $movimentacao->tipoMov }}
         </h3>
 
         <p>
-            Hora de inicio:
+            Hora de inicio: {{ $movimentacao->horaInicio }}
         </p>
 
         <p>
-            Hora de trémino:
+            Hora de trémino: {{ $movimentacao->horaFim }}
         </p>
     </div>
+    @endforeach
 @endsection
