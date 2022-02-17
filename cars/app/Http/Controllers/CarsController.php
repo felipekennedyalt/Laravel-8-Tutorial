@@ -18,6 +18,8 @@ class CarsController extends Controller
     {
         //SELECT * FROM cars
         //$cars = Car::all();
+
+        // $cars = Car::all();
         //$cars = Car::where('name', '=', 'Audi')->get();
 
         //outro jeito de fazer colocando o query em uma variavel
@@ -39,7 +41,23 @@ class CarsController extends Controller
         //print_r(Car::sum('founded'));
         //print_r(Car::avg('founded'));
 
-        $cars = Car::all();
+        // retorna uma coleção
+        // $cars = Car::all(); 
+
+        //toArray retorna como array ao invez de coleção
+        // $cars = Car::all()->toArray();
+
+
+        //toJson retorna como Json ao invez de coleção. geralmente não se converte coleções para Json e sim para array, Json é mais usado para API.
+        // $cars = Car::all()->toJson();
+        // para exibir o json eu precido fazer o decode
+        // $cars =json_decode($cars);
+
+        $cars = Car::all()->toJson();
+        $cars =json_decode($cars);
+
+
+
 
         return view('cars.index', [
             'cars' => $cars

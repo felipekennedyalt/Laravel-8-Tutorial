@@ -1,5 +1,24 @@
 @extends('layouts.app')
 
+{{-- isso é do ARRAY --}}
+{{-- @foreach ($cars as $car)
+
+
+    {{ $car['name'] }}
+
+
+@endforeach --}}
+
+{{-- Esse é do JSON --}}
+@foreach ($cars as $car)
+
+
+    {{ $car->name }}
+
+
+@endforeach
+
+
 @section('content')
     <div class="shadow p-auto m-auto bg-light rounded ">
         <div class="text-center">
@@ -14,10 +33,10 @@
         <div class="y-2 x-1">
             @foreach ($cars as $car)
                 <div class="float-right">
-                    <a class="rounded bg-success text-white border" href="cars/{{ $car->id }}/edit">
+                    <a class="rounded bg-success text-white border" href="cars//edit">
                         Edit &rarr;
                     </a>
-                    <form class="m-auto" action="/cars/{{ $car->id }}" method="POST">
+                    <form class="m-auto" action="/cars/" method="POST">
                         @csrf
                         @method('delete')
                         <button class="rounded bg-danger text-white border" type="submit">Delete &rarr;</button>
@@ -25,13 +44,13 @@
                 </div>
                 <div class="m-auto">
                     <span class="text-info text-capitalize font-italic">
-                        Founded: {{ $car->founded }}
+
                     </span>
 
                     <h2 class="text-secondary">
-                        {{ $car->name }}
+
                     </h2>
-                    <p class="text-secondary m-auto">{{ $car->description }}</p>
+                    <p class="text-secondary m-auto"></p>
                     <hr class="t-2 b4">
                 </div>
             @endforeach

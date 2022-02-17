@@ -15,8 +15,18 @@ class Car extends Model
 
     //public $timestamps = true;
 
-   // protected $dateFormat = 'h:m:s';
+    // protected $dateFormat = 'h:m:s';
 
-   //aceitar o array do carModel pra salvar os dados
-   protected $fillable = ['name', 'founded', 'description'];
+    //aceitar o array do carModel pra salvar os dados
+    protected $fillable = ['name', 'founded', 'description'];
+
+    
+
+    // Ambos o Hidden e o Visible funcionam tanto para o ARRAY quanto para o JSON
+
+    //fazer com que o Json não mande todos os dados do banco de uma vez, somente os necessários com elloquent.
+    protected $hidden = ['password', 'updated_at'];
+
+    // faz com que os dados selecionados fiquem visiveis, só vai mostrar o que adicionei dentro do visiveis.
+    protected $visible = ['name', 'founded', 'description'];
 }
