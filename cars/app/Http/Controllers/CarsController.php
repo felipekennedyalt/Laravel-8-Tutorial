@@ -53,10 +53,10 @@ class CarsController extends Controller
         // para exibir o json eu precido fazer o decode
         // $cars =json_decode($cars);
 
-        $cars = Car::all()->toJson();
-        $cars =json_decode($cars);
+        // $cars = Car::all()->toJson();
+        // $cars =json_decode($cars);
 
-
+        $cars = Car::all();
 
 
         return view('cars.index', [
@@ -107,7 +107,11 @@ class CarsController extends Controller
      */
     public function show($id)
     {
-        //
+        // $car = Car::find($id); acha tudo daquela ID específica
+        $car = Car::find($id);
+
+        // retornar a view e passar como objeto e não como array
+        return view('cars.show')->with('car', $car);
     }
 
     /**
