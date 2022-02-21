@@ -35,4 +35,21 @@ class Car extends Model
     {
         return $this->hasMany(CarModel::class);
     }
+
+    // Has many through Elloquent
+
+    public function engines()
+    {
+        return $this->hasManyThrough(
+            Engine::class,
+            CarModel::class,
+            'car_id', //foreign key na tabela CarModel
+            'model_id' //foreign key na tabela Engine
+        );
+    }
+
+    // Has One through Elloquent
+    public function productionDate(){
+        return $this->hasOneThrough(CarProductionDate::class, CarModel::class, 'car_id', 'model_id');
+    }
 }

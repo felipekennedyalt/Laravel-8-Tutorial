@@ -15,21 +15,44 @@
                 <p class="text-secondary m-auto">
                     Description: {{ $car->description }}
                 </p>
-                <ul>
-                    <p class="text-secondary m-4">
-                        Models:
-                    </p>
+
+                <table class="table table-dark">
+
+                    <tr class="bg-blue-100">
+                        <th class="w-1/4 border-4 border-gray-500">
+                            Model
+                        </th>
+                        <th class="w-1/4 border-4 border-gray-500">
+                            Engines
+                        </th>
+                        <th class="w-1/4 border-4 border-gray-500">
+                            Date
+                        </th>
+                    </tr>
 
                     @forelse ($car->carModels as $model)
-                        <li>
-                            {{ $model['model_name'] }}
-                        </li>
+                        <tr>
+                            <td class="border-4 border-gray-500">
+                                {{ $model->model_name }}
+                            </td>
+
+                            <td class="border-4 border-gray-500">
+                                @foreach ($car->engines as $engine)
+                                    @if ($model->id == $engine->model_id)
+                                        {{ $engine->engine_name }}
+                                    @endif
+                                @endforeach
+                            </td>
+
+                            <td class="border-4 border-gray-500">
+                                {{ date('d-m-Y', strtotime($car->productionDate->created_at)) }}
+                            </td>
+                        </tr>
                     @empty
-                    <p class="text-capitalize">
-                        No models found
-                    </p>
+                        <p>
+                            No car models found!
+                        </p>
                     @endforelse
-                </ul>
                 <hr class="t-2 b4">
             </div>
         @endsection

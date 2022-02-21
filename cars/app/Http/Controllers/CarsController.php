@@ -110,6 +110,7 @@ class CarsController extends Controller
         // $car = Car::find($id); acha tudo daquela ID específica
         $car = Car::find($id);
 
+
         // retornar a view e passar como objeto e não como array
         return view('cars.show')->with('car', $car);
     }
