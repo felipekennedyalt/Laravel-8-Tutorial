@@ -14,7 +14,10 @@ class MovesController extends Controller
      */
     public function index()
     {
-        //
+
+        $moves = Moves::all();
+
+        return view('moves.index', ['moves' => $moves]);
     }
 
     /**
@@ -24,7 +27,7 @@ class MovesController extends Controller
      */
     public function create()
     {
-        //
+        return view('moves.create');
     }
 
     /**
@@ -35,7 +38,15 @@ class MovesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $moves = Moves::create([
+            'cliente' => $request->input('cliente'),
+            'numContainer' => $request->input('numContainer'),
+            'tipo' => $request->input('tipo'),
+            'status' => $request->input('status'),
+            'categoria' => $request->input('categoria')
+        ]);
+        
+        return redirect('/moves');
     }
 
     /**

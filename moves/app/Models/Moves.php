@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Moves extends Model
 {
     use HasFactory;
+
+    protected $table = 'moves';
+
+    protected $primaryKey = 'id';
+
+    protected $fillable = ['cliente', 'numContainer', 'tipo', 'status', 'categoria'];
 }
