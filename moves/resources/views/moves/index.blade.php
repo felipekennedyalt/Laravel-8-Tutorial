@@ -32,7 +32,15 @@
                 Categoria: {{ $move->categoria }}
             </p>
 
-            <a href="moves/{{ $move->id }}/edit" class="m-4 btn btn-success" role="button"> Editar container</a>
+            
+                <a href="moves/{{ $move->id }}/edit" class="col m-4 btn btn-success" role="button"> Editar</a>
+
+   
+                <form class="m-auto" action="/moves/{{ $move->id }}" method="POST">
+                    @csrf
+                    @method('delete')
+                    <button class="col m-4 btn btn-danger" type="submit">Delete</button>
+                </form>
 
             <hr>
         </div>

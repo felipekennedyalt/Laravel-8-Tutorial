@@ -83,13 +83,13 @@ class MovesController extends Controller
     public function update(Request $request, $id)
     {
         $moves = Moves::where('id', $id)
-        ->update([
-            'cliente' => $request->input('cliente'),
-            'numContainer' => $request->input('numContainer'),
-            'tipo' => $request->input('tipo'),
-            'status' => $request->input('status'),
-            'categoria' => $request->input('categoria')
-        ]);
+            ->update([
+                'cliente' => $request->input('cliente'),
+                'numContainer' => $request->input('numContainer'),
+                'tipo' => $request->input('tipo'),
+                'status' => $request->input('status'),
+                'categoria' => $request->input('categoria')
+            ]);
 
         return redirect('/moves');
     }
@@ -100,8 +100,10 @@ class MovesController extends Controller
      * @param  \App\Models\Moves  $moves
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Moves $moves)
+    public function destroy($id)
     {
-        //
+        $moves = Moves::find($id)->delete();
+
+        return redirect('/moves');
     }
 }
