@@ -16,7 +16,7 @@ class MovmentacaoController extends Controller
     {
         $movimentacaos = Movimentacao::all();
 
-        return view('movin.index')->with('movimentacaos', $movimentacaos);
+        return view('movin.index', ['movimentacaos' => $movimentacaos]);
     }
 
     /**

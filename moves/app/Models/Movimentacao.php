@@ -15,8 +15,7 @@ class Movimentacao extends Model
 
     protected $fillable = ['cliente', 'tipoMov', 'inicio', 'fim'];
 
-    public function Movimentacao()
-    {
+    public function Movimentacao(){
 
         return $this->belongsTo(Moves::class);
     }
