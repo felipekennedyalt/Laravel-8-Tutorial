@@ -55,9 +55,11 @@ class MovesController extends Controller
      * @param  \App\Models\Moves  $moves
      * @return \Illuminate\Http\Response
      */
-    public function show(Moves $moves)
+    public function show($id)
     {
-        //
+        $moves = Moves::findOrFail($id);
+
+        return view('moves.show')->with('moves', $moves);
     }
 
     /**

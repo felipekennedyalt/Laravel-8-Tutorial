@@ -13,7 +13,8 @@
     @foreach ($moves as $move)
         <div class="m-4">
             <h2>
-                Cliente: {{ $move->cliente }}
+                Cliente:
+                <a href="/moves/{{ $move->id }}" class="text-decoration-none">{{ $move->cliente }}</a>
             </h2>
 
             <p>
@@ -32,15 +33,15 @@
                 Categoria: {{ $move->categoria }}
             </p>
 
-            
-                <a href="moves/{{ $move->id }}/edit" class="col m-4 btn btn-success" role="button"> Editar</a>
 
-   
-                <form class="m-auto" action="/moves/{{ $move->id }}" method="POST">
-                    @csrf
-                    @method('delete')
-                    <button class="col m-4 btn btn-danger" type="submit">Delete</button>
-                </form>
+            <a href="moves/{{ $move->id }}/edit" class="col m-4 btn btn-success" role="button"> Editar</a>
+
+
+            <form class="m-auto" action="/moves/{{ $move->id }}" method="POST">
+                @csrf
+                @method('delete')
+                <button class="col m-4 btn btn-danger" type="submit">Delete</button>
+            </form>
 
             <hr>
         </div>
