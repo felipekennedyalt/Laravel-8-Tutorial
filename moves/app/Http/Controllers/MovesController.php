@@ -70,7 +70,7 @@ class MovesController extends Controller
      */
     public function edit($id)
     {
-        $moves = Moves::find($id)->first();
+        $moves = Moves::find($id);
 
         return view('moves.edit')->with('moves', $moves);
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Movimentacao;
 use Illuminate\Http\Request;
 
 class MovmentacaoController extends Controller
@@ -13,7 +14,9 @@ class MovmentacaoController extends Controller
      */
     public function index()
     {
-        //
+        $movimentacaos = Movimentacao::all();
+
+        return view('movin.index')->with('movimentacaos', $movimentacaos);
     }
 
     /**
