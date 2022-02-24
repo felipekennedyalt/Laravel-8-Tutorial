@@ -6,8 +6,9 @@
     </div>
 
     <div>
-        <a href="moves/create" class="link-primary m-4 text-decoration-none"> Adicionar container</a>
+        <a href="moves/create" class="m-4 btn btn-primary" role="button"> Adicionar container</a>
     </div>
+
 
     @foreach ($moves as $move)
         <div class="m-4">
@@ -30,6 +31,9 @@
             <p>
                 Categoria: {{ $move->categoria }}
             </p>
+
+            <a href="moves/{{ $move->id }}/edit" class="m-4 btn btn-success" role="button"> Editar container</a>
+
             <hr>
         </div>
     @endforeach

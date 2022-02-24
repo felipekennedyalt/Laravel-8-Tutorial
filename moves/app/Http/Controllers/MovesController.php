@@ -45,7 +45,7 @@ class MovesController extends Controller
             'status' => $request->input('status'),
             'categoria' => $request->input('categoria')
         ]);
-        
+
         return redirect('/moves');
     }
 
@@ -66,9 +66,11 @@ class MovesController extends Controller
      * @param  \App\Models\Moves  $moves
      * @return \Illuminate\Http\Response
      */
-    public function edit(Moves $moves)
+    public function edit($id)
     {
-        //
+        $moves = Moves::find($id)->first();
+
+        return view('moves.edit')->with('moves', $moves);
     }
 
     /**
@@ -78,9 +80,18 @@ class MovesController extends Controller
      * @param  \App\Models\Moves  $moves
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Moves $moves)
+    public function update(Request $request, $id)
     {
-        //
+        $moves = Moves::where('id', $id)
+        ->update([
+            'cliente' => $request->input('cliente'),
+            'numContainer' => $request->input('numContainer'),
+            'tipo' => $request->input('tipo'),
+            'status' => $request->input('status'),
+            'categoria' => $request->input('categoria')
+        ]);
+
+        return redirect('/moves');
     }
 
     /**
