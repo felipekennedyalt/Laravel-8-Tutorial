@@ -14,4 +14,10 @@ class Moves extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = ['cliente', 'numContainer', 'tipo', 'status', 'categoria'];
+
+
+    public function Movimentacaos(){
+
+        return $this->hasMany(Movimentacao::class);
+    }
 }
