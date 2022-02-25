@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MovesController;
+use App\Http\Controllers\MovmentacaoController;
 use App\Models\Movimentacao;
 use Illuminate\Support\Facades\Route;
 
@@ -21,4 +22,4 @@ Route::get('/', function () {
 
 Route::resource('/moves', MovesController::class);
 
-Route::resource('/movin', Movimentacao::class);
+Route::resource('/movin', MovmentacaoController::class);
