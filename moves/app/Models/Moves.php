@@ -15,6 +15,7 @@ class Moves extends Model
 
     protected $fillable = ['cliente', 'numContainer', 'tipo', 'status', 'categoria'];
 
+    $Movimentacao = Movimentacao::find(1)->Movimentacao;
 
     public function Movimentacaos(){
 
