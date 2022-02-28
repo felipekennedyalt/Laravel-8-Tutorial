@@ -9,13 +9,13 @@ class Movimentacao extends Model
 {
     use HasFactory;
 
-    protected $table = 'Movimentacaos';
+    protected $table = 'movimentacaos';
 
-    protected $primarykey = 'id';
+    protected $primaryKey = 'id';
 
-    protected $fillable = ['cliente', 'tipoMov', 'inicio', 'fim'];
+    protected $fillable = ['moves_id', 'tipoMov', 'inicio', 'fim'];
 
-    public function Movimentacao(){
+    public function Move(){
 
         return $this->belongsTo(Moves::class);
     }

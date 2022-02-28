@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('movimentacaos', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('moves_id');
+            $table->unsignedInteger('moves_id')->default(null);
             $table->string('tipoMov');
             $table->dateTime('inicio');
             $table->dateTime('fim');

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Movimentacao;
-use App\Models\movimentacoes;
 use Illuminate\Http\Request;
 
 class MovmentacaoController extends Controller
@@ -31,7 +30,6 @@ class MovmentacaoController extends Controller
         $movimentacaos = Movimentacao::all();
 
         return view('movin.create', ['movimentacaos' => $movimentacaos]);
-
     }
 
     /**
@@ -44,13 +42,14 @@ class MovmentacaoController extends Controller
     {
 
         $movimentacaos = Movimentacao::create([
-            'moves_id' => $request->input('cliente'),
-            'tipoMov' => $request->input('tipoMMov'),
+            'moves_id' => $request->input('moves_id'),
+            'tipoMov' => $request->input('tipoMov'),
             'inicio' => $request->input('inicio'),
             'fim' => $request->input('fim')
         ]);
 
-        return redirect('movin.index');
+        
+        return redirect('movin');
     }
 
     /**

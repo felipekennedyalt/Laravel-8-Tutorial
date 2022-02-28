@@ -26,6 +26,12 @@
                 Categoria: {{ $moves->categoria }}
             </p>
             <hr>
+
+            {{-- @foreach ($movimentacaos as $moviment)
+            @if ($moviment->moves_id == $moves->id)
+            value="{{ $moves->cliente }}"
+            @endif
+            @endforeach> --}}
         </div>
 
 
