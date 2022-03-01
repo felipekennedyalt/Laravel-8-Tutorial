@@ -23,3 +23,5 @@ Route::get('/', function () {
 Route::resource('/moves', MovesController::class);
 
 Route::resource('/movin', MovmentacaoController::class);
+
+Route::get('moves/index-filtering', 'MovesController@indexFiltering');

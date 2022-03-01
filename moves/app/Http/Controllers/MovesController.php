@@ -14,11 +14,31 @@ class MovesController extends Controller
      */
     public function index()
     {
+        $moves = Moves::paginate(5);
 
-        $moves = Moves::all();
+        return view('moves.index')->with('moves', $moves);
 
-        return view('moves.index', ['moves' => $moves]);
+        // $moves = Moves::all();
+
+        // return view('moves.index', ['moves' => $moves]);
     }
+
+    public function indexFiltering(Request $request)
+{
+    $filter = $request->query('filter');
+    $moves = Moves::paginate(5);
+
+    if (!empty($filter)) {
+        $products = Moves::sortable()
+            ->where('moves.cliente', 'like', '%'.$filter.'%')
+            ->paginate(5);
+    } else {
+        $products = Moves::sortable()
+            ->paginate(5);
+    }
+
+    return view('moves.index-filtering')->with('moves', $moves)->with('filter', $filter);
+}
 
     /**
      * Show the form for creating a new resource.
