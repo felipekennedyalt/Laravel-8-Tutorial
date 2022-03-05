@@ -3,6 +3,8 @@
 @section('conteudo')
     <h1 class="text-center m-4">Adiciona Movimentação</h1>
 
+
+
     <div class="m-4">
         <form action="/movin" method="POST" class="form row">
             @csrf
@@ -12,11 +14,15 @@
                     <option>Cliente</option>
                     <!--selected by default-->
                     @foreach ($movimentacaos as $movi)
-                        <option value="{{ $movi->moves_id }}">
-                             {{ $movi->moves_id }}-{{ $movi->cliente }}
-                        </option>
+                        @foreach ($moves as $move)
+                            @if ($move->id !== null)
+                                <option value="{{ $move->id }}">
+                                    {{ $move->id }} - {{ $move->cliente }}
+                            @endif
+                        @endforeach
                     @endforeach
                 </select>
+
             </div>
 
             <div class="col">

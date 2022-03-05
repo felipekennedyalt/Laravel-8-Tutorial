@@ -5,6 +5,8 @@
         <h1>Containers</h1>
     </div>
 
+    <a href="/movin" class="m-4 btn btn-primary">Movimentações</a>
+
     <div>
         <a href="moves/create" class="m-4 btn btn-primary" role="button"> Adicionar container</a>
     </div>
@@ -79,15 +81,8 @@
     </p>
     <p>{{ $moves->links() }}</p> --}}
 
-    <form class="form-inline" method="GET">
-        <div class="form-group mb-2">
-          <label for="filter" class="col-sm-2 col-form-label">Filter</label>
-          <input type="text" class="form-control" id="filter" name="filter" placeholder="Product name..." value="{{$filter}}">
-        </div>
-        <button type="submit" class="btn btn-default mb-2">Filter</button>
-      </form>
 
-    <table class="table table-bordere table-hover">
+    <table class="table table-bordered table-hover">
         <thead>
             <th>Cliente</th>
             <th>Numero</th>
@@ -106,10 +101,29 @@
                     <td>{{ $move->tipo }}</td>
                     <td>{{ $move->status }}</td>
                     <td>{{ $move->categoria }}</td>
+                    <td>
+                        <div class="row">
+                            <div class="col">
+                                <a href="moves/{{ $move->id }}/edit" class="m-1 btn btn-success" role="button">
+                                    Editar</a>
+                            </div>
+                            <div class="col">
+                                <form class="" action="/moves/{{ $move->id }}" method="POST">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="m-1 col btn btn-danger" type="submit">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+
+
                 </tr>
             @endforeach
         </tbody>
     </table>
+ 
     <p>Mostrando {{ $moves->count() }} de {{ $moves->total() }} Containers.</p>
     <p>{{ $moves->links() }}</p>
+    
 @endsection

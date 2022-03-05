@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Moves;
 use App\Models\Movimentacao;
 use Illuminate\Http\Request;
 
@@ -15,9 +15,10 @@ class MovmentacaoController extends Controller
      */
     public function index()
     {
-        $movimentacaos = Movimentacao::all();
+        $movimentacaos = Movimentacao::paginate(5);
+        $moves = Moves::paginate(5);
 
-        return view('movin.index', ['movimentacaos' => $movimentacaos]);
+        return view('movin.index', ['movimentacaos' => $movimentacaos])->with('moves', $moves);
     }
 
     /**
@@ -28,8 +29,9 @@ class MovmentacaoController extends Controller
     public function create()
     {
         $movimentacaos = Movimentacao::all();
+        $moves = Moves::all();
 
-        return view('movin.create', ['movimentacaos' => $movimentacaos]);
+        return view('movin.create', ['movimentacaos' => $movimentacaos])->with('moves', $moves);
     }
 
     /**
@@ -71,7 +73,9 @@ class MovmentacaoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $movimentacaos = Movimentacao::find($id);
+
+        return view('movin.edit')->with('movi', $movimentacaos);
     }
 
     /**
@@ -83,7 +87,13 @@ class MovmentacaoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $movimentacaos = Movimentacao::where('id', $id)->update([
+            'tipoMov' => $request->input('tipoMov'),
+            'inicio' => $request->input('inicio'),
+            'fim' => $request->input('fim')
+        ]);
+
+        return redirect('/movin');
     }
 
     /**
@@ -94,6 +104,11 @@ class MovmentacaoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $movimentacaos = Movimentacao::find($id)->delete();
+
+        
+
+        return redirect('/movin');
+
     }
 }
