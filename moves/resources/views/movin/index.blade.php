@@ -60,6 +60,11 @@
             <th>Tipo de Movimentação</th>
             <th>Inicio</th>
             <th>Fim</th>
+            <th>
+                <form action="/orderBy" method="GET">
+                    <button type="submit" class="btn btn-info">Ordem</button>
+                </form>
+            </th>
         </thead>
         <tbody>
             @if ($moves->count() == 0)

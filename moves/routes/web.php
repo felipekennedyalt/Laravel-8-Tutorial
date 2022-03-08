@@ -24,3 +24,5 @@ Route::resource('/moves', MovesController::class);
 Route::resource('/movin', MovmentacaoController::class);
 
 Route::get('/orderBy', 'App\Http\Controllers\MovesController@orderBy');
+
+Route::get('/orderBy', 'App\Http\Controllers\MovmentacaoController@orderBy');

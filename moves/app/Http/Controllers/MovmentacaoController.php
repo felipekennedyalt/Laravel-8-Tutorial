@@ -21,6 +21,24 @@ class MovmentacaoController extends Controller
         return view('movin.index', ['movimentacaos' => $movimentacaos])->with('moves', $moves);
     }
 
+    public function orderBy(Request $request){
+
+        $movimentacaos = Movimentacao::all();
+
+        $moves = Moves::all();
+
+        $ordem = $request->session()->get('ordem', 'desc');
+
+        $movimentacaos = Movimentacao::orderBy('inicio', $ordem)->paginate(5);
+
+        $ordem = $ordem == 'desc' ? 'asc' : 'desc';
+
+        $request = session()->put('ordem', $ordem);
+
+        return view('movin.index', ['movimentacaos' => $movimentacaos])->with('moves', $moves);
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *

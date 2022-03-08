@@ -43,11 +43,8 @@ class MovesController extends Controller
         // store in session for next time
         $request->session()->put('sortOrder', $sortOrder);
 
-        $movess = Moves::paginate(5);
 
-        
-
-        return view('moves.index')->with('moves', $moves, 'movess', $movess);
+        return view('moves.index')->with('moves', $moves);
     }
 
 
