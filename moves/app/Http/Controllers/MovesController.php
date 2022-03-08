@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Moves;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MovesController extends Controller
 {
@@ -18,9 +19,30 @@ class MovesController extends Controller
 
         return view('moves.index')->with('moves', $moves);
 
+
         // $moves = Moves::all();
 
         // return view('moves.index', ['moves' => $moves]);
+    }
+
+    public function orderBy(Request $request)
+    {
+
+        // $moves = DB::table('moves')->get();
+
+            // read from session, use 'desc' if not set
+        $sortOrder = $request->session()->get('sortOrder', 'desc');
+
+        // do the query
+        $moves = Moves::orderBy('cliente', $sortOrder)->get();
+
+        //toggle the sort order for next time
+        $sortOrder = $sortOrder == 'desc' ? 'asc': 'desc';
+
+        // store in session for next time
+       $request->session()->put('sortOrder', $sortOrder);
+
+        return view('moves.index')->with('moves', $moves);
     }
 
 

@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\MovesController;
 use App\Http\Controllers\MovmentacaoController;
-use App\Models\Movimentacao;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +23,4 @@ Route::resource('/moves', MovesController::class);
 
 Route::resource('/movin', MovmentacaoController::class);
 
+Route::get('/orderBy', 'App\Http\Controllers\MovesController@orderBy');
