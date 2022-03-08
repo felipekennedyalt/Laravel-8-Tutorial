@@ -81,13 +81,18 @@
     </p>
     <p>{{ $moves->links() }}</p> --}}
 
-    {{-- <table class="table table-bordered table-hover">
+    <table class="table table-bordered table-hover">
         <thead>
             <th>Cliente</th>
             <th>Numero</th>
             <th>Tipo</th>
             <th>Status</th>
             <th>categoria</th>
+            <th>
+                <form action="/orderBy" method="GET">
+                    <button type="submit" class="m-auto btn btn-info">Ordenar</button>
+                </form>
+            </th>
         </thead>
         <tbody>
             @if ($moves->count() == 0)
@@ -121,19 +126,9 @@
             @endforeach
         </tbody>
     </table>
- 
-    <p>Mostrando {{ $moves->count() }} de {{ $moves->total() }} Containers.</p>
-    <p>{{ $moves->links() }}</p> --}}
-
-    <form action="/orderBy" method="GET">
-        @csrf
-        <button type="submit">orderBy</button>
-        <hr>
-    </form>
-
-    @foreach ($moves as $move)
-        <div class="m-4">
-            <p>{{ $move->cliente }}</p>
-        </div>
-    @endforeach
+    
+    <div class="m-4">
+        <p>Mostrando {{ $moves->count() }} de {{ $moves->total() }} Containers.</p>
+        <p>{{ $moves->links('pagination::bootstrap-5') }}</p>
+    </div>
 @endsection

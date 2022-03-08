@@ -27,22 +27,27 @@ class MovesController extends Controller
 
     public function orderBy(Request $request)
     {
-
         // $moves = DB::table('moves')->get();
 
-            // read from session, use 'desc' if not set
+
+        // read from session, use 'desc' if not set
         $sortOrder = $request->session()->get('sortOrder', 'desc');
 
         // do the query
-        $moves = Moves::orderBy('cliente', $sortOrder)->get();
+        $moves = Moves::orderBy('cliente', $sortOrder)->paginate(5);
 
         //toggle the sort order for next time
-        $sortOrder = $sortOrder == 'desc' ? 'asc': 'desc';
+        $sortOrder = $sortOrder == 'desc' ? 'asc' : 'desc';
 
+        
         // store in session for next time
-       $request->session()->put('sortOrder', $sortOrder);
+        $request->session()->put('sortOrder', $sortOrder);
 
-        return view('moves.index')->with('moves', $moves);
+        $movess = Moves::paginate(5);
+
+        
+
+        return view('moves.index')->with('moves', $moves, 'movess', $movess);
     }
 
 

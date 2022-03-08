@@ -96,5 +96,5 @@
         </tbody>
     </table>
     <p class="m-auto">Mostrando {{ $movimentacaos->count() }} de {{ $movimentacaos->total() }} movimentações</p>
-    <p class="m-auto">{{ $movimentacaos->links() }}</p>
+    <p class="m-auto">{{ $movimentacaos->links('pagination::bootstrap-5') }}</p>
 @endsection
