@@ -25,6 +25,17 @@ class MovesController extends Controller
         // return view('moves.index', ['moves' => $moves]);
     }
 
+    public function filtro(Request $request)
+    {
+        $moves = Moves::paginate(5);
+
+        // $filtrado = Moves::where('cliente', 'like', '%'.$request->input('filtroNome').'%')->paginate(5);
+
+        $filtrado = DB::table('moves')->where('cliente', 'like', '%' . $request->input('filtroNome') . '%')->paginate(5);
+        
+        return view('moves.index')->with('moves', $moves)->with('filtrado', $filtrado);
+    }
+
     public function orderBy(Request $request)
     {
         // $moves = DB::table('moves')->get();
@@ -39,7 +50,7 @@ class MovesController extends Controller
         //toggle the sort order for next time
         $sortOrder = $sortOrder == 'desc' ? 'asc' : 'desc';
 
-        
+
         // store in session for next time
         $request->session()->put('sortOrder', $sortOrder);
 

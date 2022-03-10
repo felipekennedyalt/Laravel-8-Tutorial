@@ -10,76 +10,15 @@
     <div>
         <a href="moves/create" class="m-4 btn btn-primary" role="button"> Adicionar container</a>
     </div>
-    {{-- @foreach ($moves as $move)
-        <div class="m-4">
-            <h2>
-                Cliente:
-                <a href="/moves/{{ $move->id }}" class="text-decoration-none">{{ $move->cliente }}</a>
-            </h2>
 
-            <p>
-                Numero do Container: {{ $move->numContainer }}
-            </p>
+    <div class="m-4">
+        <form action="/filtro" method="GET">
+            @csrf
+            <input type="search" name="filtroNome" id="">
 
-            <p>
-                Tipo: {{ $move->tipo }}
-            </p>
-
-            <p>
-                Status: {{ $move->status }}
-            </p>
-
-            <p>
-                Categoria: {{ $move->categoria }}
-            </p>
-
-
-            <a href="moves/{{ $move->id }}/edit" class="col m-4 btn btn-success" role="button"> Editar</a>
-
-
-            <form class="m-auto" action="/moves/{{ $move->id }}" method="POST">
-                @csrf
-                @method('delete')
-                <button class="col m-4 btn btn-danger" type="submit">Delete</button>
-            </form>
-
-            <hr>
-           
-        </div> 
-         @endforeach --}}
-
-    {{-- <table class="table table-bordered table-hover">
-        <thead>
-            <th>Cliente</th>
-            <th>Numero</th>
-            <th>Tipo</th>
-            <th>Status</th>
-            <th>categoria</th>
-        </thead>
-        <tbody>
-            @if ($moves->count() == 0)
-                <tr>
-                    <td colspan="5">Não há nada aqui.</td>
-                </tr>
-            @endif
-
-            @foreach ($moves as $move)
-                <tr>
-                    <td>{{ $move->cliente }}</td>
-                    <td>{{ $move->numContainer }}</td>
-                    <td>{{ $move->tipo }}</td>
-                    <td>{{ $move->status }}</td>
-                    <td>
-                        {{ $move->categoria }}
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-    <p>
-        Displaying {{ $moves->count() }} of {{ $moves->total() }} product(s).
-    </p>
-    <p>{{ $moves->links() }}</p> --}}
+            <button type="submit" class="btn btn-primary">procurar</button>
+        </form>
+    </div>
 
     <table class="table table-bordered table-hover">
         <thead>
@@ -90,6 +29,7 @@
             <th>categoria</th>
             <th>
                 <form action="/orderBy" method="GET">
+                    @csrf
                     <button type="submit" class="m-auto btn btn-info">Ordenar por Nome</button>
                 </form>
             </th>
@@ -126,7 +66,7 @@
             @endforeach
         </tbody>
     </table>
-    
+
     <div class="m-4">
         <p>Mostrando {{ $moves->count() }} de {{ $moves->total() }} Containers.</p>
         <p>{{ $moves->links('pagination::bootstrap-5') }}</p>

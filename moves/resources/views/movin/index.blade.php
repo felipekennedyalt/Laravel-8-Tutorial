@@ -62,6 +62,7 @@
             <th>Fim</th>
             <th>
                 <form action="/orderByMov" method="GET">
+                    @csrf
                     <button type="submit" class="btn btn-info">Ordem por Data</button>
                 </form>
             </th>
