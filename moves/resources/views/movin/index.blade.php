@@ -61,8 +61,8 @@
             <th>Inicio</th>
             <th>Fim</th>
             <th>
-                <form action="/orderBy" method="GET">
-                    <button type="submit" class="btn btn-info">Ordem</button>
+                <form action="/orderByMov" method="GET">
+                    <button type="submit" class="btn btn-info">Ordem por Data</button>
                 </form>
             </th>
         </thead>

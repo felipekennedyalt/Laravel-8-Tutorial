@@ -21,7 +21,7 @@ class MovmentacaoController extends Controller
         return view('movin.index', ['movimentacaos' => $movimentacaos])->with('moves', $moves);
     }
 
-    public function orderBy(Request $request){
+    public function orderByMov(Request $request){
 
         $movimentacaos = Movimentacao::all();
 

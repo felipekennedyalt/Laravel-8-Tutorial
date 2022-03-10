@@ -90,7 +90,7 @@
             <th>categoria</th>
             <th>
                 <form action="/orderBy" method="GET">
-                    <button type="submit" class="m-auto btn btn-info">Ordenar</button>
+                    <button type="submit" class="m-auto btn btn-info">Ordenar por Nome</button>
                 </form>
             </th>
         </thead>
