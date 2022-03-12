@@ -27,13 +27,13 @@ class MovesController extends Controller
 
     public function filtro(Request $request)
     {
-        $moves = Moves::paginate(5);
 
         // $filtrado = Moves::where('cliente', 'like', '%'.$request->input('filtroNome').'%')->paginate(5);
-
-        $filtrado = DB::table('moves')->where('cliente', 'like', '%' . $request->input('filtroNome') . '%')->paginate(5);
         
-        return view('moves.index')->with('moves', $moves)->with('filtrado', $filtrado);
+
+        $filtrado = DB::table('moves')->where('cliente', 'like', '%' . $request->input('filtroNome') . '%')->get();
+        
+        return view('moves.filtro')->with('filtrado', $filtrado);
     }
 
     public function orderBy(Request $request)

@@ -5,20 +5,23 @@
         <h1>Containers</h1>
     </div>
 
-    <a href="/movin" class="m-4 btn btn-primary">Movimentações</a>
+    <div class="row">
+        <div class="col">
+            <a href="/movin" class="m-4 btn btn-primary">Movimentações</a>
+        </div>
 
-    <div>
-        <a href="moves/create" class="m-4 btn btn-primary" role="button"> Adicionar container</a>
+        <div class="col">
+            <a href="moves/create" class="m-4 btn btn-primary" role="button"> Adicionar container</a>
+
+        </div>
+
+        <div class="col">
+            <a href="/filtro" class="m-4 btn btn-primary" role="button"> Procurar</a>
+        </div>
+
     </div>
 
-    <div class="m-4">
-        <form action="/filtro" method="GET">
-            @csrf
-            <input type="search" name="filtroNome" id="">
 
-            <button type="submit" class="btn btn-primary">procurar</button>
-        </form>
-    </div>
 
     <table class="table table-bordered table-hover">
         <thead>
