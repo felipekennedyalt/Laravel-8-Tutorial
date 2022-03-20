@@ -6,7 +6,7 @@
     </h1>
 
     <div class="m-4">
-        <form action="/filtro" method="GET">
+        <form action="/filtroCont" method="GET">
             @csrf
             <input type="search" name="filtroNome" id="">
 
@@ -14,7 +14,7 @@
         </form>
     </div>
 
-    @foreach ($filtrado as $filter)
+    @foreach ($filtradoCont as $filter)
         <div class="m-4">
             <p>
                 Cliente: {{ $filter->cliente }}

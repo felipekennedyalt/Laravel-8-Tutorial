@@ -25,15 +25,15 @@ class MovesController extends Controller
         // return view('moves.index', ['moves' => $moves]);
     }
 
-    public function filtro(Request $request)
+    public function filtroCont(Request $request)
     {
 
         // $filtrado = Moves::where('cliente', 'like', '%'.$request->input('filtroNome').'%')->paginate(5);
         
 
-        $filtrado = DB::table('moves')->where('cliente', 'like', '%' . $request->input('filtroNome') . '%')->get();
+        $filtradoCont = DB::table('moves')->where('cliente', 'like', '%' . $request->input('filtroNome') . '%')->get();
         
-        return view('moves.filtro')->with('filtrado', $filtrado);
+        return view('moves.filtroCont')->with('filtradoCont', $filtradoCont);
     }
 
     public function orderBy(Request $request)

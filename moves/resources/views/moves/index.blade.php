@@ -16,7 +16,7 @@
         </div>
 
         <div class="col">
-            <a href="/filtro" class="m-4 btn btn-primary" role="button"> Procurar</a>
+            <a href="/filtroCont" class="m-4 btn btn-primary" role="button"> Procurar</a>
         </div>
 
     </div>

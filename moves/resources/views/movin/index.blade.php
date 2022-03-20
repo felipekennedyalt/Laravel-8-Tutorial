@@ -3,56 +3,22 @@
 @section('conteudo')
     <h1 class="m-4 text-center">Movimentação</h1>
 
-    <a href="/moves" class="m-4 btn btn-primary">Containers</a>
+    <div class="row m-4">
+        <div class="col">
+            <a href="/moves" class="m-4 btn btn-primary">Containers</a>
+        </div>
 
-    <div>
-        <a href="movin/create" class="m-4 btn btn-primary" role="button"> Adicionar Movimentação</a>
+        <div class="col">
+            <a href="movin/create" class="m-4 btn btn-primary" role="button"> Adicionar Movimentação</a>
+        </div>
+
+        <div class="col">
+            <a href="/filtroMov" class="m-4 btn btn-primary" role="button">Procurar</a>
+        </div>
+
     </div>
 
-    {{-- @foreach ($movimentacaos as $moviment)
-        @forelse ($moves as $move)
-            @if ($moviment->moves_id == $move->id)
-                <div class="m-4">
-                    <h3>
-                        Nome do cliente: {{ $move->cliente }}
-                    </h3>
 
-                    <p>
-                        Tipo de Movimentação: {{ $moviment->tipoMov }}
-                    </p>
-                    <p>
-                        Inicio da movimentação: {{ $moviment->inicio }}
-                    </p>
-                    <p>
-                        Fim da movimentação: {{ $moviment->fim }}
-                    </p>
-
-                    <div class="row">
-                        <div class="col">
-                            <a href="movin/{{ $moviment->id }}/edit" class="m-4 btn btn-success">Editar</a>
-                        </div>
-
-                        <div class="col">
-                            <form action="movin/{{ $moviment->id }}" method="POST">
-                                @csrf
-                                @method('delete')
-                                <button type="submit" class="m-4 btn btn-danger">Deletar</button>
-                            </form>
-                        </div>
-
-
-
-                    </div>
-
-
-                    <hr>
-                </div>
-            @endif
-
-        @empty
-            {{ ERRO }}
-        @endforelse
-    @endforeach --}}
 
     <table class="table table-bordered table-hover">
         <thead>

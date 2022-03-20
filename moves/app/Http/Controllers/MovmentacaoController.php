@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Moves;
 use App\Models\Movimentacao;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MovmentacaoController extends Controller
 {
@@ -37,6 +38,17 @@ class MovmentacaoController extends Controller
 
         return view('movin.index', ['movimentacaos' => $movimentacaos])->with('moves', $moves);
 
+    }
+
+    public function filtroMov(Request $request)
+    {
+
+        // $filtrado = Moves::where('cliente', 'like', '%'.$request->input('filtroNome').'%')->paginate(5);
+        
+
+        $filtradoMov = DB::table('movimentacaos')->where('tipoMov', 'like', '%' . $request->input('filtroTipoMov') . '%')->get();
+        
+        return view('movin.filtroMov')->with('filtradoMov', $filtradoMov);
     }
 
     /**
