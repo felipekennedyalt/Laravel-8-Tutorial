@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Car;
+use App\Models\Product;
 
 use function Ramsey\Uuid\v1;
 
@@ -58,7 +59,6 @@ class CarsController extends Controller
 
         $cars = Car::all();
 
-
         return view('cars.index', [
             'cars' => $cars
         ]);
@@ -110,6 +110,10 @@ class CarsController extends Controller
         // $car = Car::find($id); acha tudo daquela ID específica
         $car = Car::find($id);
 
+        // var_dump($car->products);
+
+        // $products = Product::find($id);
+        // print_r($products);
 
         // retornar a view e passar como objeto e não como array
         return view('cars.show')->with('car', $car);

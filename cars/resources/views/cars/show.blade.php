@@ -53,6 +53,15 @@
                             No car models found!
                         </p>
                     @endforelse
+
+                    <p>
+                        Product types:
+                        @forelse ($car->products as $product)
+                            {{ $product->name }}
+                        @empty
+                            <p>No car product description</p>
+                        @endforelse
+                    </p>
                 <hr class="t-2 b4">
             </div>
         @endsection
