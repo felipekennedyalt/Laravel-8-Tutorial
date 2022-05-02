@@ -21,4 +21,15 @@
             </div>
         </form>
     </div>
+    
+    @if ($errors->any())
+        <div class=" shadow p-auto m-auto bg-light rounded">
+            @foreach ($errors->all() as $error)
+                <li>
+                    {{ $error }}
+                </li>
+            @endforeach
+        </div>
+    @endif
+
 @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Car;
 use App\Models\Product;
+use App\Rules\Uppercase;
 
 use function Ramsey\Uuid\v1;
 
@@ -90,6 +91,23 @@ class CarsController extends Controller
         // $car->save();
 
         //outro jeito de fazer, da pra usar tambem o método make alem do create, se usar o metodo make ao invez do create tem que usar o metodo save() no final
+
+
+
+
+        //Validação, metodo validate vai checar os dados vindo do request e checar se são true ou não, se for true vai sair do $request->validate e proseguir para o create.
+
+        //se não for valido vai de dar uma ValidationException e te jogar pra pagina anterior com todos os erros de validação
+
+        //no codigo pode ser só assim ('founded' => 'required') mas da pra colocar outras regras, como ele deve ser único e estar na tabela cars desse jeito ('name' => 'required|unique:cars')
+
+        //regras de validação: https://laravel.com/docs/9.x/validation#available-validation-rules
+        $request->validate([
+            'name' => new Uppercase,
+            'founded' => 'required|integer|min:0|max:2021',
+            'description' => 'required'
+        ]);
+
         $car = Car::create([
             'name' => $request->input('name'),
             'founded' => $request->input('founded'),
