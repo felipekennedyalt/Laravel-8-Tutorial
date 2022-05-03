@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Car;
 use App\Models\Product;
 use App\Rules\Uppercase;
+use App\Http\Requests\CreateValidationRequest;
 
 use function Ramsey\Uuid\v1;
 
@@ -81,8 +82,11 @@ class CarsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateValidationRequest $request)
     {
+        // public function store(Request $request) <- antes de fazer a validação atravez dos requests
+
+
         //um jeito de fazer
         // $car = new Car();
         // $car->name = $request->input('name');
@@ -102,11 +106,16 @@ class CarsController extends Controller
         //no codigo pode ser só assim ('founded' => 'required') mas da pra colocar outras regras, como ele deve ser único e estar na tabela cars desse jeito ('name' => 'required|unique:cars')
 
         //regras de validação: https://laravel.com/docs/9.x/validation#available-validation-rules
-        $request->validate([
-            'name' => new Uppercase,
-            'founded' => 'required|integer|min:0|max:2021',
-            'description' => 'required'
-        ]);
+        // $request->validate([
+        //     'name' => new Uppercase,
+        //     'founded' => 'required|integer|min:0|max:2021',
+        //     'description' => 'required'
+        // ]);
+
+
+
+
+        $request->validated();
 
         $car = Car::create([
             'name' => $request->input('name'),
@@ -162,8 +171,13 @@ class CarsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateValidationRequest $request, $id)
     {
+        // public function update(Request $request, $id) <- antes de fazer a validação atravez dos requests
+
+        $request->validated();
+
+
         $car = Car::where('id', $id)
             ->update([
                 'name' => $request->input('name'),
