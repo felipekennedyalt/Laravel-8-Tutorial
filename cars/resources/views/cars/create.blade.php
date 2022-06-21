@@ -10,9 +10,10 @@
     </div>
 
     <div>
-        <form action="/cars" method="POST">
+        <form action="/cars" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="d-block p-2 bg-primary text-white">
+                <input type="file" name="image" class="p-auto m-4"><br> 
                 <input type="text" name="name" placeholder="Brand name">
                 <input type="text" name="founded" placeholder="founded">
                 <input type="text" name="description" placeholder="description">

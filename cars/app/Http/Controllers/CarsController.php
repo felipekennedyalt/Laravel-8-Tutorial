@@ -82,9 +82,11 @@ class CarsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateValidationRequest $request)
+    public function store(Request $request)
     {
         // public function store(Request $request) <- antes de fazer a validação atravez dos requests
+
+        // public function store(CreateValidationRequest $request) <- antes de trocar de novo no video do upload de imagem
 
 
         //um jeito de fazer
@@ -113,14 +115,44 @@ class CarsController extends Controller
         // ]);
 
 
+        // metodos que podem ser usados em $request, pois o laravel foi baseado em uma outra tecnologia
+        // guessExtension() mostra a extensão do arquivo com o dd($test);
+        // getMimeType() mostra a extensão do arquivo e o tipocom o dd($test);
+        // store()
+        // asStore()
+        // storePublicly()
+        // move()
+        // getClientOriginalName() deixa a imgaem ser upada com qualquer nome e depois podemos mudar o nome para algo único
+        // getClientMimeType()
+        // guesClientExtension()
+        // getSize() mostra o tamanho do arquivo com o dd($test);
+        // getError() mostra se tem erros com o dd($test);
+        // isValid()
+        // $test = $request->file('image')->isValid();
+        // dd($test);
 
 
-        $request->validated();
+        // mimes:jpg,png,jpeg significa que só vai aceitar esses formatos de imagem com o tamanho máximo de 5048 kb
+        $request->validate([
+            'name' => 'required',
+            'founded' => 'required|integer|min:0|max:2021',
+            'description' => 'required',
+            'image' => 'required|mimes:jpg,png,jpeg|max:5048'
+        ]);
+
+        // mudar o nome da imagem
+        $newImageName = time() . '-' . $request->name . '.' . $request->image->extension();
+
+        $request->image->move(public_path('images'), $newImageName);
+
+
+        // se for valido vai continuar se não vai mandar uma ValidationException.
 
         $car = Car::create([
             'name' => $request->input('name'),
             'founded' => $request->input('founded'),
-            'description' => $request->input('description')
+            'description' => $request->input('description'),
+            'image_path' => $newImageName
         ]);
 
         return redirect('/cars');

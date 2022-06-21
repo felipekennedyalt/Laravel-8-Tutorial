@@ -2,7 +2,9 @@
 
 @section('content')
     <div class="shadow p-auto m-4 bg-light rounded ">
+        
         <div class="text-center">
+            <img src="{{ asset('images/'. $car->image_path) }}" alt="" class="m-4 img-thumbnail w-25" >
             <h3 class="text-uppercase text-black-50">{{ $car->name }}</h3>
         </div>
 
