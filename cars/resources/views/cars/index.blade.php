@@ -24,24 +24,33 @@
         <div class="text-center">
             <h3 class="text-uppercase text-black-50">CARRO</h3>
         </div>
+        @if (Auth::user())
+            <div class="m-4">
+                <a href="/cars/create" class="rounded bg-primary text-white border">Add a new car &rarr;</a>
+            </div>
+        @else
+            <p>
+                Please login to add a new car.
+            </p>
+        @endif
 
-        <div class="m-4">
-            <a href="/cars/create" class="rounded bg-primary text-white border">Add a new car &rarr;</a>
-        </div>
 
 
         <div class="m-4">
             @foreach ($cars as $car)
-                <div class="float-right">
-                    <a class="rounded bg-success text-white border" href="cars//edit">
-                        Edit &rarr;
-                    </a>
-                    <form class="m-auto" action="/cars/" method="POST">
-                        @csrf
-                        @method('delete')
-                        <button class="rounded bg-danger text-white border" type="submit">Delete &rarr;</button>
-                    </form>
-                </div>
+                @if (isset(Auth::user()->id) && Auth::user()->id == $car->user_id)
+                    <div class="float-right">
+                        <a class="rounded bg-success text-white border" href="cars/{{ $car->id }}/edit">
+                            Edit &rarr;
+                        </a>
+                        <form class="m-auto" action="/cars/{{ $car->id }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button class="rounded bg-danger text-white border" type="submit">Delete &rarr;</button>
+                        </form>
+                    </div>
+                @endif
+
                 <div class="m-auto">
                     <span class="text-info text-capitalize font-italic">
                         Founded: {{ $car->founded }}

@@ -14,9 +14,9 @@
             @csrf
             @method('PUT')
             <div class="d-block p-2 bg-primary text-white">
-                <input type="text" name="name" placeholder="Brand name" value="{{ $car->name }}">
-                <input type="text" name="founded" placeholder="founded" value="{{ $car->founded }}">
-                <input type="text" name="description" placeholder="description" value="{{ $car->description }}">
+                <input type="text" name="name"  value="{{ $car->name }}">
+                <input type="text" name="founded"  value="{{ $car->founded }}">
+                <input type="text" name="description"  value="{{ $car->description }}">
 
                 <button type="submit" class="rounded bg-primary text-white border">Submit</button>
             </div>

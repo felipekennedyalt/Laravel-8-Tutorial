@@ -18,7 +18,7 @@ class Car extends Model
     // protected $dateFormat = 'h:m:s';
 
     //aceitar o array do carModel pra salvar os dados
-    protected $fillable = ['name', 'founded', 'description', 'image_path'];
+    protected $fillable = ['name', 'founded', 'description', 'image_path', 'user_id'];
 
 
 

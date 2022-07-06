@@ -12,6 +12,12 @@ use function Ramsey\Uuid\v1;
 
 class CarsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -152,7 +158,8 @@ class CarsController extends Controller
             'name' => $request->input('name'),
             'founded' => $request->input('founded'),
             'description' => $request->input('description'),
-            'image_path' => $newImageName
+            'image_path' => $newImageName,
+            'user_id' => auth()->user()->id
         ]);
 
         return redirect('/cars');
@@ -188,7 +195,7 @@ class CarsController extends Controller
     {
 
         //só com o método find() eu precisaria fazer um loop, usando o first() ele retorna um objeto então não precisa mais fazer o loop.
-        $car = Car::find($id)->first();
+        $car = Car::find($id);
 
         //O with() serve pra não passar como um array e sim como um objeto $car
         return view('cars.edit')->with('car', $car);
