@@ -15,7 +15,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json([
+
+            'status' => true,
+            'posts' => []
+        ]);
     }
 
     /**
