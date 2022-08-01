@@ -79,9 +79,13 @@ class PostController extends Controller
      * @param  \App\Models\POST  $pOST
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, POST $pOST)
+    public function update(StorePostRequest $request, POST $post)
     {
-        //
+        $post->update($request->all());
+
+        return response()->json([
+
+        ]);
     }
 
     /**
