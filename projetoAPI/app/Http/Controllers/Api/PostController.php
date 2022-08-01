@@ -16,10 +16,12 @@ class PostController extends Controller
      */
     public function index()
     {
+
+        $posts = Post::all();
         return response()->json([
 
             'status' => true,
-            'posts' => []
+            'posts' => $posts
         ]);
     }
 
@@ -85,6 +87,9 @@ class PostController extends Controller
 
         return response()->json([
 
+            'status' => true,
+            'message' => "Post Updated sucessfully",
+            'post' => $post
         ]);
     }
 
@@ -94,8 +99,14 @@ class PostController extends Controller
      * @param  \App\Models\POST  $pOST
      * @return \Illuminate\Http\Response
      */
-    public function destroy(POST $pOST)
+    public function destroy(POST $post)
     {
-        //
+        $post->delete();
+
+        return response()->json([
+
+            'ststus' => true,
+            'message' => "Post deletes sucessfully"
+        ], 200);
     }
 }
